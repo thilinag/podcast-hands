@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto&display=swap');
+
+h1,h2,h3 {
+    font-family: 'Archivo Black', sans-serif;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: 0em;
+    margin: 0em;
+}
+
+footer, header {
+    margin:5em 0em;
+}
