@@ -7,16 +7,15 @@ type Props = {
 }
 
 const Layout = ({ children, title = 'This is the default title' }: Props) => (
-  <div>
+  <div className='app'>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <header>
-      <h1>🙋‍♂️ TechKatha 🙋‍♀️</h1>
-    </header>
-    {children}
+    <section>
+      {children}
+    </section>
     <footer>
       <span>built with ❤️ by <a href="http://kaveenrodrigo.com">Kaveen Rodrigo</a></span>
     </footer>

@@ -1,32 +1,28 @@
-.emoji {
-    font-size: 7em;
-    margin: 0em 0em;
+.users {
+    display: flex;
+    flex-direction: column;
 }
 
-.emojiHolder {
-    background-color: antiquewhite;
-    padding: 4em 0em;
-    width: 100%;
-    user-select: none;
+.letMeTalkButton {
+    margin-top: 2em;
+    padding: 1em 2em;
+    font-size: 2em;
+    font-family: 'Archivo Black', sans-serif;
+    text-transform: uppercase;
+    border-radius: 4em;
+    border: 0;
+    background: #d4bfee;
+    cursor: pointer;
 }
 
-.activeColor {
-    background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+.letMeTalkButton:focus {
+    box-shadow: 0 0 0 5px white, 0 0 0 6px #d4bfee;
+    outline: none;
 }
 
-.inactiveColor {
-    background: linear-gradient(90deg, #f8ff00 0%, #3ad59f 100%);
-}
+@media (min-width: 1025px) {
+    .users {
+        flex-direction: row;
+    }
 
-.cutInButton {
-    font-size: 5em;
-    transform: translateY(-0.5em);
-    display: block;
-    background-color: gainsboro;
-    border-radius: 100%;
-    width: 1.3em;
-    height: 1.3em;
-    padding: 0.3em;
-    margin: 0 auto;
-    user-select: none;
 }

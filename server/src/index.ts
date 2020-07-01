@@ -25,7 +25,9 @@ io.on("connect", (socket: any) => {
     console.log("Registering User %s", usr.name);
     const user: User = {
       id: uuidv4(),
-      name: usr.name
+      name: usr.name,
+      wantsToTalk: false,
+      queuedAt: null
     };
     handsEngine.registerUser(user);
     socket.user = user;

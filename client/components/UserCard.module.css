@@ -1,0 +1,18 @@
+.user {
+    text-transform: uppercase;
+    font-weight: bolder;
+    position: relative;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 3em;
+    margin: 1em;
+}
+
+.userStatus {
+    position: absolute;
+    right: -1em;
+    top: -1em;
+    font-style: normal;
+    background: #9cf8a6;
+    padding: 10px;
+    border-radius: 50%;
+}
