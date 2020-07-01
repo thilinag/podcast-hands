@@ -9,10 +9,19 @@
 
 .userStatus {
     position: absolute;
-    right: -1em;
+    right: -1.5em;
     top: -1em;
     font-style: normal;
     background: #9cf8a6;
-    padding: 10px;
-    border-radius: 50%;
+    padding: .2em;
+    border-radius: 4em;
+    display: flex;
+    align-items: center;
+}
+
+.ellapsedSeconds {
+    font-family: 'Roboto', sans-serif;
+    opacity: 0.5;
+    margin: 0 0.25em 0 0;
+    font-size: 0.5em;
 }
