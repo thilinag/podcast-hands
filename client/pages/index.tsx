@@ -6,7 +6,7 @@ import styles from "./index.module.css";
 
 const StartSessionView = (props) => {
   const { nameRef, setSessionState } = props;
-  const [userName, setUserName] = useState<String>('');
+  const [userName, setUserName] = useState<string>('');
 
   useEffect(() => {
     const savedUserName = localStorage.getItem('userName');
@@ -15,7 +15,7 @@ const StartSessionView = (props) => {
     }
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     localStorage.setItem('userName', e.target.value);
     setUserName(e.target.value);
   }

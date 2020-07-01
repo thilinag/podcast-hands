@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styles from "./UserCard.module.css";
-import User from '../interfaces';
+import { User } from '../interfaces';
 import Counter from './Counter';
 
-const UserCard = (props: User) => {
+type UserCardProps = {
+    user: User
+}
+
+const UserCard = (props: UserCardProps) => {
 
     const { user: { name, wantsToTalk, queuedAt }} = props;
     const emoji:string = wantsToTalk ? '✋' : '';

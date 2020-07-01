@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Counter.module.css';
 
-const Counter = (props: Date) => {
+type CounterProps = {
+  queuedAt: Date | null
+}
+
+const Counter = (props: CounterProps) => {
     const { queuedAt } = props;
 
     const [counter, setCounter] = useState<number>(0);
 
     useEffect(() => {
         const interval = setInterval(() => {
-          setCounter(counter => Math.floor((new Date() - new Date(queuedAt)) / 1000));
+          if (queuedAt) {
+            setCounter(Math.floor((new Date().valueOf() - new Date(queuedAt).valueOf()) / 1000));
+          }
         }, 1000);
 
         return () => {

@@ -1,9 +1,9 @@
 import socketIOClient from "socket.io-client";
-import { useEffect, useState, ReactElement } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import styles from "./SessionView.module.css";
 import UserCard from './UserCard';
-import User from '../interfaces';
+import { User } from '../interfaces';
 
 interface SessionViewProps {
     name: string
@@ -39,8 +39,12 @@ const SessionView = (props: SessionViewProps) => {
 
     const Users = () => {
 
+        if (!sessionState) {
+            return (<div>Loading&hellip;</div>);
+        }
+
         //sort users by queuedAt;
-        const userQueue: User[] = sessionState.users.sort((a, b) => new Date(a.queuedAt) - new Date(b.queuedAt));
+        const userQueue: User[] = sessionState.users.sort((a, b) => new Date(a.queuedAt || 0).valueOf() - new Date(b.queuedAt || 0).valueOf());
 
         //move users who did not queue to the end
         userQueue.push(userQueue.splice(userQueue.findIndex(user => user.queuedAt == null), 1)[0]);
@@ -51,7 +55,6 @@ const SessionView = (props: SessionViewProps) => {
                     return (<UserCard user={user} key={user.id} />) 
                 })}
             </div>
-
         )  
     }
 
