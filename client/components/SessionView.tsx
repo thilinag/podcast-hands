@@ -61,7 +61,7 @@ const SessionView = (props: SessionViewProps) => {
             { sessionState?.users &&
                 <Users />
             }
-            <button className={styles.letMeTalkButton} type="button" onClick={()=>toggleHands()}>
+            <button className={styles.letMeTalkButton} type="button" onClick={()=>toggleHands()} autoFocus>
                 { wantToTalk ? 'Changed my mind 🤐' : 'Let me talk ✋' }
             </button>
         </>

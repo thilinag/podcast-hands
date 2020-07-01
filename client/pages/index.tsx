@@ -21,7 +21,7 @@ const StartSessionView = (props) => {
   }
 
   return (<form className={styles.joinForm} onSubmit={() => setSessionState(true)}>
-    <input required placeholder='Name' value={userName} onChange={handleChange} className={styles.nameInput} type="text" name={"screenName"} ref={nameRef} />
+    <input required placeholder='Name' value={userName} onChange={handleChange} className={styles.nameInput} type="text" name={"screenName"} ref={nameRef} autoFocus/>
     <button className={styles.joinButton}>Join</button>
   </form>);
 };
