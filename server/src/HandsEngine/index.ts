@@ -1,12 +1,13 @@
 
 export interface User {
     id: string,
-    name: string
+    name: string,
+    wantsToTalk: boolean,
+    queuedAt: Date | null
 }
 
 export interface State {
-    active?: User,
-    queue: User[]
+    users: User[]
 }
 
 export interface StateChangeHook {
@@ -24,20 +25,14 @@ export interface IHandsEngine {
 export class HandsEngine implements IHandsEngine {
 
     private users: User[] = new Array();
-    private handQueue: User[] = new Array();
 
     private hook?: StateChangeHook;
 
     private buildState(): State {
 
-        var handQueue = this.handQueue;
-        var activeUser = handQueue.length == 0 ? undefined : handQueue[0];
-        if (activeUser != undefined){
-            handQueue = handQueue.filter((usr)=> usr.id !== activeUser?.id);
-        }
+        const users = this.users;
         const data = {
-            active: activeUser,
-            queue: handQueue
+            users: users
         }
         if (this.hook){
             this.hook(data);
@@ -54,17 +49,14 @@ export class HandsEngine implements IHandsEngine {
     deRegisterUser(usr: User): boolean {
 
         this.users = this.users.filter((item) => item.id !== usr.id);
-        this.handQueue = this.handQueue.filter((item) => item.id !== usr.id);
         this.buildState();
         return true;
     }
 
     toggleHands(usr: User): void {
-        if (this.handQueue.find((cur)=>cur.id == usr.id)){
-            this.handQueue = this.handQueue.filter((item) => item.id !== usr.id);
-        } else {
-            this.handQueue.push(usr);
-        }
+        const userIndex = this.users.findIndex((user) => user.id === usr.id);
+        this.users[userIndex].wantsToTalk = !this.users[userIndex].wantsToTalk;
+        this.users[userIndex].queuedAt = this.users[userIndex].wantsToTalk ? new Date() : null;
         this.buildState();
     }
     
