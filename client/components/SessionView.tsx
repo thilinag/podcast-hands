@@ -39,7 +39,6 @@ const SessionView = (props: SessionViewProps) => {
 
     const Users = () => {
 
-        console.log(sessionState.users);
         //sort users by queuedAt;
         const userQueue: User[] = sessionState.users.sort((a, b) => new Date(a.queuedAt) - new Date(b.queuedAt));
 
@@ -54,7 +53,7 @@ const SessionView = (props: SessionViewProps) => {
             </div>
 
         )  
-    } 
+    }
 
     return (
         <>
@@ -62,7 +61,7 @@ const SessionView = (props: SessionViewProps) => {
                 <Users />
             }
             <button className={styles.letMeTalkButton} type="button" onClick={()=>toggleHands()} autoFocus>
-                { wantToTalk ? 'Changed my mind 🤐' : 'Let me talk ✋' }
+                { wantToTalk ? 'Clear' : 'Let me talk ✋' }
             </button>
         </>
     )
