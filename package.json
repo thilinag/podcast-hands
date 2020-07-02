@@ -6,10 +6,10 @@
   "author": "Kaveen Rodrigo <u.k.k.rodrigo@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "install": "npm install --save-dev --prefix ./client && npm install --save-dev --prefix ./server",
+    "install": "npm install --save-dev --prefix ./client && npm install --save-dev --prefix ./server && npm run build",
     "build": "npm run build --prefix ./client && npm run build --prefix ./server",
     "runapp": "npm start --prefix ./server/",
-    "start": "npm run build && npm run runapp"
+    "start": "npm run runapp"
   },
   "engines": {
     "node": "14.x",
