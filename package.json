@@ -6,7 +6,7 @@
   "author": "Kaveen Rodrigo <u.k.k.rodrigo@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "install": "npm install --prefix ./client && npm install --prefix ./server",
+    "install": "npm install --save-dev --prefix ./client && npm install --save-dev --prefix ./server",
     "build": "npm run build --prefix ./client && npm run build --prefix ./server",
     "runapp": "npm start --prefix ./server/",
     "start": "npm run install && npm run build && npm run runapp"
