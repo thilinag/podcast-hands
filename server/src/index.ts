@@ -36,11 +36,17 @@ io.on("connect", (socket: any) => {
 
   socket.on("toggleHands", () => {
     const usr: User = socket.user;
+    if(!usr){
+      return;
+    }
     handsEngine.toggleHands(usr);
   })
 
   socket.on('disconnect', () => {
     const usr: User = socket.user;
+    if(!usr){
+      return;
+    }
     console.log("Un-Registering User %s", usr.name);
     handsEngine.deRegisterUser(usr)
   })
