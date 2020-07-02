@@ -17,7 +17,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       {children}
     </section>
     <footer>
-      <span>built with ❤️ by <a href="http://kaveenrodrigo.com">Kaveen Rodrigo</a></span>
+      <span>built with ❤️ by <a target="_blank" href="https://github.com/kaveenr/podcast-hands/graphs/contributors">Humans</a></span>
     </footer>
   </div>
 )

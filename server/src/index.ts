@@ -7,9 +7,10 @@ const handsEngine = new HandsEngine();
 
 const app = express();
 let http = require("http").Server(app);
+let port = process.env.PORT || 3005
 
-const server = http.listen(3005, function() {
-  console.log("listening on *:3005");
+const server = http.listen(port, function() {
+  console.log("listening on *:" + port);
 });
 app.use(express.static(path.join(__dirname, '../../client/out')));
 

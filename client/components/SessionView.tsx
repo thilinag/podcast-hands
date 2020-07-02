@@ -21,7 +21,8 @@ const SessionView = (props: SessionViewProps) => {
     const [wantToTalk, setWantToTalk] = useState<boolean>(false);
 
     useEffect(() => {
-        const socket = socketIOClient("http://localhost:3005");
+        // TODO Auto Configure Based On Environment
+        const socket = socketIOClient();
         socket.emit("registerUser", {
             "name": props.name
         })

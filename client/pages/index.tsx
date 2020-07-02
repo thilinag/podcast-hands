@@ -4,7 +4,11 @@ import { useState, useEffect, useRef } from 'react';
 import SessionView from '../components/SessionView';
 import styles from "./index.module.css";
 
-const StartSessionView = (props) => {
+interface StartSessionViewProps {
+  nameRef: any,
+  setSessionState: any
+}
+const StartSessionView = (props: StartSessionViewProps) => {
   const { nameRef, setSessionState } = props;
   const [userName, setUserName] = useState<string>('');
 
