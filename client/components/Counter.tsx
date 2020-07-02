@@ -20,7 +20,7 @@ const Counter = (props: CounterProps) => {
         return () => {
           clearInterval(interval);
         };
-    }, []);
+    }, [counter, queuedAt]);
 
     return (
         <span className={styles.root}>
