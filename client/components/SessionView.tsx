@@ -47,11 +47,14 @@ const SessionView = (props: SessionViewProps) => {
         const userQueue: User[] = sessionState.users.sort((a, b) => new Date(a.queuedAt || 0).valueOf() - new Date(b.queuedAt || 0).valueOf());
 
         //move users who did not queue to the end
-        userQueue.push(userQueue.splice(userQueue.findIndex(user => user.queuedAt == null), 1)[0]);
+        const sortedUserQueue : User[] = [
+            ...userQueue.filter( user => user.queuedAt !== null),
+            ...userQueue.filter( user => user.queuedAt === null)
+        ];
 
         return (
             <div className={styles.users}>
-                { userQueue.map( user => {
+                { sortedUserQueue.map( user => {
                     return (<UserCard user={user} key={user.id} />) 
                 })}
             </div>
