@@ -18,7 +18,7 @@ export interface IHandsEngine {
     registerUser(usr: User): State
     deRegisterUser(usr: User): void
     toggleHands(usr: User): void
-    cutInUser(usr: User): void
+    userCount(usr: User): number
     registerStateChangeHook(hook: StateChangeHook): void
 }
 
@@ -60,8 +60,8 @@ export class HandsEngine implements IHandsEngine {
         this.buildState();
     }
     
-    cutInUser(usr: User): void {
-        throw new Error("Method not implemented.");
+    userCount(): number {
+        return this.users.length;
     }
 
     registerStateChangeHook(hook: StateChangeHook): void {
