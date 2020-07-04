@@ -22,31 +22,25 @@ let io = require("socket.io")(http);
 
 io.on("connect", (socket: any) => {
 
-  socket.on("registerUser", (usr: UserRegistration) => {
-    console.log("Registering User %s", usr.name);
+  if (!socket.user) {
+    var userName = socket.handshake.query['userName'];
+    console.log("Registering User %s", userName);
     const user: User = {
       id: uuidv4(),
-      name: usr.name,
+      name: userName,
       wantsToTalk: false,
       queuedAt: null
     };
     handsEngine.registerUser(user);
     socket.user = user;
-  });
+  }
+  const usr: User = socket.user;
 
   socket.on("toggleHands", () => {
-    const usr: User = socket.user;
-    if(!usr){
-      return;
-    }
     handsEngine.toggleHands(usr);
   })
 
   socket.on('disconnect', () => {
-    const usr: User = socket.user;
-    if(!usr){
-      return;
-    }
     console.log("Un-Registering User %s", usr.name);
     handsEngine.deRegisterUser(usr)
   })

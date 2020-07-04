@@ -22,10 +22,9 @@ const SessionView = (props: SessionViewProps) => {
 
     useEffect(() => {
         // TODO Auto Configure Based On Environment
-        const socket = socketIOClient();
-        socket.emit("registerUser", {
-            "name": props.name
-        })
+        const socket = socketIOClient("/", {
+            query: "userName=" + props.name
+        });
         socket.on("state", (state: State) => {
             setSessionState(state);
         })
