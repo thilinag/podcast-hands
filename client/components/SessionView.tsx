@@ -6,7 +6,8 @@ import UserCard from './UserCard';
 import { User } from '../interfaces';
 
 interface SessionViewProps {
-    name: string
+    name: string,
+    room: string
 }
 
 interface State {
@@ -21,10 +22,10 @@ const SessionView = (props: SessionViewProps) => {
     const [wantToTalk, setWantToTalk] = useState<boolean>(false);
 
     useEffect(() => {
-        const socket = socketIOClient("http://localhost:3005");
-        socket.emit("registerUser", {
-            "name": props.name
-        })
+        // TODO Auto Configure Based On Environment
+        const socket = socketIOClient("/", {
+            query: "userName=" + props.name + "&room=" + props.room
+        });
         socket.on("state", (state: State) => {
             setSessionState(state);
         })

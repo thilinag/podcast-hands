@@ -3,8 +3,14 @@ import dynamic from 'next/dynamic'
 import { useState, useEffect, useRef } from 'react';
 import SessionView from '../components/SessionView';
 import styles from "./index.module.css";
+import { v4 as uuidv4 } from 'uuid';
 
-const StartSessionView = (props) => {
+interface StartSessionViewProps {
+  nameRef: any,
+
+  setSessionState: any
+}
+const StartSessionView = (props: StartSessionViewProps) => {
   const { nameRef, setSessionState } = props;
   const [userName, setUserName] = useState<string>('');
 
@@ -30,12 +36,25 @@ const IndexPage = () => {
 
   const nameRef = useRef<HTMLInputElement>(null);
   const [sessionStatus, setSessionState] = useState<boolean>(false);
+  const [room, setRoom] = useState<string>("")
+
+  useEffect(()=> {
+    const search = window.location.search;
+    const params = new URLSearchParams(search);
+    if (params.has("room")) {
+      setRoom(params.get("room") || "")
+    } else {
+      let roomId = uuidv4()
+      setRoom(roomId);
+      window.location.search = "&room=" + roomId; 
+    }
+  }, [])
   
   return (
     <Layout title="TK Hands APP">
       {!sessionStatus 
         ? <StartSessionView nameRef={nameRef} setSessionState={setSessionState} /> 
-        : <SessionView name={nameRef.current?.value || ""} />}
+        : <SessionView name={nameRef.current?.value || ""} room={room} />}
     </Layout>
   )
 }
